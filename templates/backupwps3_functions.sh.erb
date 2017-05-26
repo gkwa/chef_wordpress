@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -e
+#set -x
+#shopt -s -o nounset
+
+backup()
+{
+    local bucket
+
+    while [[ ${1} ]]; do
+        case "${1}" in
+            --bucket)
+                bucket=${2}
+                shift
+                ;;
+            *)
+                echo "Unknown parameter: ${1}" >&2
+                return 1
+        esac
+
+        if ! shift; then
+            echo 'Missing parameter argument.' >&2
+            return 1
+        fi
+    done
+
+    cd /tmp
+    tmpdir=$(mktemp -d /tmp/www.XXXXXXXX)
+    function finish {
+        rm -rf "$tmpdir"
+    }
+    trap finish EXIT
+    mkdir -p $tmpdir
+
+    cd $tmpdir
+    /usr/local/bin/wp --quiet --allow-root \
+	   --path=<%= node['chef_wordpress']['wordpress_root'] %> \
+	   db export wordpress.sql
+    /usr/local/bin/aws s3 cp --only-show-errors $tmpdir/wordpress.sql s3://$bucket
+
+    /usr/local/bin/wp --quiet --allow-root \
+	   --path=<%= node['chef_wordpress']['wordpress_root'] %> \
+       export --dir=$tmpdir --filename_format=wordpress.wxr
+    /usr/local/bin/aws s3 cp --only-show-errors $tmpdir/wordpress.wxr s3://$bucket
+
+    /usr/local/bin/aws s3 sync --delete --exclude '*/cache/*' --only-show-errors \
+       <%= node['chef_wordpress']['wordpress_root'] %> s3://$bucket<%= node['chef_wordpress']['wordpress_root'] %>
+    cd /tmp
+    rm -rf $tmpdir
+}

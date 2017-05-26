@@ -1,0 +1,6 @@
+Metrics/BlockLength:
+  Enabled: No
+Metrics/LineLength:
+  Enabled: No
+Style/PercentLiteralDelimiters:
+  Enabled: No

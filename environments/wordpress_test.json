@@ -1,0 +1,22 @@
+{
+  "name": "wordpress_test",
+  "description": "",
+  "cookbook_versions": {
+
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "chef_wordpress": {
+      "wp_debug": "true",
+      "wp_debug_log": "true",
+      "wp_debug_display": "true",
+      "wp_script_debug": "true",
+      "wp_auto_update_core": "true",
+      "wp_disallow_file_mods": "false"
+    }
+  },
+  "override_attributes": {
+
+  }
+}

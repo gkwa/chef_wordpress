@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+certbot-auto certonly \
+  --text \
+  --preferred-challenges http \
+  --manual-public-ip-logging-ok \
+  --eff-email \
+  --agree-tos \
+  --webroot \
+  --webroot-path <%= @webroot %> \
+  -m <%= @email %> \
+  -d <%= node['fqdn'] %>

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# https://stackoverflow.com/a/14072710/1495086
+
+ps -ef | grep -v grep | grep optipng >/dev/null && exit 0
+ps -ef | grep -v grep | grep jpegoptim >/dev/null && exit 0
+
+find <%= node['chef_wordpress']['wordpress_root'] %>/wp-content \
+  -iname '*.png' \
+  -print0 |
+xargs -r0 optipng
+
+find <%= node['chef_wordpress']['wordpress_root'] %>/wp-content \
+  -iname '*.jpg' -or \
+  -iname '*.jpeg' \
+  -print0 |
+xargs -r0 jpegoptim
