@@ -1,4 +1,1 @@
-# taylor-wordpress-wrapper
-
-TODO: Enter the cookbook description here.
-
+I don't know what I'm doing.  Don't use this cookbook.
