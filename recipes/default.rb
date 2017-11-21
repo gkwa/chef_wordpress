@@ -4,6 +4,7 @@ package 'ncdu'
 
 include_recipe 'chef_wordpress::debug'
 include_recipe 'chef_wordpress::generate_bootstrap'
+include_recipe 'streambox_mail::default'
 include_recipe 'prometheus-platform::default'
 
 include_recipe 'chef_wordpress::hosts'

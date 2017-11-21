@@ -17,6 +17,7 @@ supports 'fedora'
 supports 'redhat'
 supports 'ubuntu'
 
+depends 'streambox_mail'
 depends 'acme'
 depends 'certbot'
 depends 'chef_nginx'

@@ -1,6 +1,10 @@
 # convenience for debugging, add config files to vim history
 ruby_block 'Add files to nvim queue for debug' do
   list = %w{
+    /etc/postfix/sasl_passwd
+    /etc/postfix/master.cf
+    /etc/postfix/main.cf
+    /etc/postfix/virtual
     ~/.config/nvim
     ~/.vim
     /etc/nginx/nginx.conf
