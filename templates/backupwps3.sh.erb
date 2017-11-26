@@ -5,4 +5,4 @@
 
 . /usr/local/bin/backupwps3_functions.sh
 
-backup --bucket backup-$(hostname)
+backup --bucket <%= node['chef_wordpress']['backup_s3_bucket'] %>

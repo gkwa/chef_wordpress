@@ -21,3 +21,6 @@ bin/*
 Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
+.terraform/
+*.tvars
+terraform.tfstate.d/
