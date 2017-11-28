@@ -14,6 +14,7 @@ template "#{ENV['PWD']}/env_#{node.chef_environment}.tvars" do
     mysql_wordpress_password:      database_creds[node.chef_environment]['db_password'],
     chef_provisioner_user_key:     node['chef_wordpress']['chef_provisioner_user_key'],
     chef_provider_client_name:     node['chef_wordpress']['chef_provider_client_name'],
-    s3_backup_bucket:              "#{node['chef_wordpress']['fqdn']}-backup"
+    s3_backup_bucket:              "#{node['chef_wordpress']['fqdn']}-backup",
+    node_name:                     node['chef_wordpress']['node_name']
   )
 end

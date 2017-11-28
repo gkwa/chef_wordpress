@@ -31,6 +31,7 @@ variable "s3_backup_bucket" {}
 variable "cloudfront_s3_bucket" {}
 variable "cloudfront_cname" {}
 variable "fqdn" {}
+variable "node_name" {}
 
 variable "streambox_zone_id" {
   default = "ZYM2WVE2N8MU5"

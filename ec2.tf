@@ -160,7 +160,7 @@ resource "aws_instance" "web" {
     attributes_json = "${join("\n", data.template_file.init.*.rendered)}"
     environment     = "wordpress_test"
     run_list        = ["chef_wordpress::hosts"]
-    node_name       = "wwwtest"
+    node_name       = "${var.node_name}"
     secret_key      = "${file("~/.chef/encrypted_data_bag_secret")}"
     server_url      = "https://chef.streambox.com/organizations/streambox"
     recreate_client = true
