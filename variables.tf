@@ -1,3 +1,14 @@
+variable "mysql_wordpress_password" {}
+variable "mysql_wordpress_username" {}
+
+variable "chef_client_name" {
+  default = "wwwtest"
+}
+
+variable "chef_server_url" {
+  default = "https://chef.streambox.com/organizations/streambox"
+}
+
 variable "provisioner_chef_user_key" {
   description = "PEM key to enable chef-client to connect to chef server"
   default     = "~/.chef/mtm.pem"
@@ -13,52 +24,18 @@ variable "private_key_path" {
   default     = "~/.ssh/aws_keys/StreamboxLive-California.pem"
 }
 
-variable "mysql_root_password" {
-  type = "string"
-}
-
-variable "mysql_root_username" {
-  type = "string"
-}
-
-variable "aws_access_key_id" {
-  type = "string"
-}
-
-variable "aws_secret_access_key" {
-  type = "string"
-}
-
-variable "region" {
-  type = "string"
-}
-
-variable "terraform_environment" {
-  type = "string"
-}
-
-variable "terraform_wordpress_backup_s3_bucket" {
-  type = "string"
-}
-
-variable "terraform_cloudfront_s3_bucket" {
-  type = "string"
-}
-
-variable "cloudfront_cname" {
-  type = "string"
-}
-
-variable "origin_access_identity" {
-  type = "string"
-}
+variable "mysql_root_password" {}
+variable "mysql_root_username" {}
+variable "aws_access_key_id" {}
+variable "aws_secret_access_key" {}
+variable "region" {}
+variable "terraform_environment" {}
+variable "terraform_wordpress_backup_s3_bucket" {}
+variable "terraform_cloudfront_s3_bucket" {}
+variable "cloudfront_cname" {}
+variable "origin_access_identity" {}
+variable "fqdn" {}
 
 variable "streambox_zone_id" {
-  type = "string"
-
   default = "ZYM2WVE2N8MU5"
-}
-
-variable "fqdn" {
-  type = "string"
 }
