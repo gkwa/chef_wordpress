@@ -7,10 +7,13 @@ template "#{ENV['PWD']}/env_#{node.chef_environment}.tvars" do
   variables(
     aws_access_key_id:             wordpress_creds[node.chef_environment]['dns_aws_access_key_id'],
     aws_secret_access_key:         wordpress_creds[node.chef_environment]['dns_aws_secret_access_key'],
-    aws_cloudfront_cname:      "#{node['terraform_hostname'] || node['hostname']}cdn.#{node['terraform_domain'] || node['domain']}".downcase,
+    aws_cloudfront_cname:          node['chef_wordpress']['aws_cloudfront_cname'],
     mysql_root_username:           database_creds[node.chef_environment]['mysql_root_username'],
     mysql_root_password:           database_creds[node.chef_environment]['mysql_root_password'],
     mysql_wordpress_username:      database_creds[node.chef_environment]['db_user'],
-    mysql_wordpress_password:  database_creds[node.chef_environment]['db_password']
+    mysql_wordpress_password:      database_creds[node.chef_environment]['db_password'],
+    chef_provisioner_user_key:     node['chef_wordpress']['chef_provisioner_user_key'],
+    chef_provider_client_name:     node['chef_wordpress']['chef_provider_client_name'],
+    s3_backup_bucket:              "#{node['chef_wordpress']['fqdn']}-backup"
   )
 end

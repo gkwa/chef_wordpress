@@ -10,7 +10,7 @@ vendor:
 	berks vendor cookbooks
 
 pretty:
-	terraform fmt
+	@terraform fmt
 
 clean:
 	rm -rf cookbooks/

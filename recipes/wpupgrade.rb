@@ -1,4 +1,3 @@
-wordpress_creds = data_bag_item('secrets', 'wordpress')
 database_creds = data_bag_item('secrets', 'database_creds')
 
 directory node['chef_wordpress']['wordpress_root'] do

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "b1" {
-  bucket = "${var.terraform_cloudfront_s3_bucket}"
+  bucket = "${var.cloudfront_s3_bucket}"
   acl    = "public-read"
 
   versioning {
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "b1" {
   }
 
   tags {
-    Name        = "${var.terraform_cloudfront_s3_bucket}"
+    Name        = "${var.cloudfront_s3_bucket}"
     Environment = "${var.terraform_environment}"
   }
 }

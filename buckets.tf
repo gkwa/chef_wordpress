@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "b2" {
-  bucket = "${var.terraform_wordpress_backup_s3_bucket}"
+  bucket = "${var.s3_backup_bucket}"
   acl    = "private"
 
   versioning {
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "b2" {
   }
 
   tags {
-    Name        = "${var.terraform_wordpress_backup_s3_bucket}"
+    Name        = "${var.s3_backup_bucket}"
     Environment = "${var.terraform_environment}"
   }
 }

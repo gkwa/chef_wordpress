@@ -1,9 +1,6 @@
 variable "mysql_wordpress_password" {}
 variable "mysql_wordpress_username" {}
-
-variable "chef_client_name" {
-  default = "wwwtest"
-}
+variable "chef_provider_client_name" {}
 
 variable "chef_server_url" {
   default = "https://chef.streambox.com/organizations/streambox/"
@@ -30,10 +27,9 @@ variable "aws_access_key_id" {}
 variable "aws_secret_access_key" {}
 variable "region" {}
 variable "terraform_environment" {}
-variable "terraform_wordpress_backup_s3_bucket" {}
-variable "terraform_cloudfront_s3_bucket" {}
+variable "s3_backup_bucket" {}
+variable "cloudfront_s3_bucket" {}
 variable "cloudfront_cname" {}
-variable "origin_access_identity" {}
 variable "fqdn" {}
 
 variable "streambox_zone_id" {
