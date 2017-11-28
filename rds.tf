@@ -32,7 +32,6 @@ resource "aws_db_security_group" "default" {
   name = "chef_wordpress"
 
   ingress {
-    # FIXME: when we get connection from wp to rds working, remove 0.0.0.0/0
-    cidr = "0.0.0.0/0,${aws_instance.web.private_ip}/32"
+    security_group_id = "${aws_security_group.FrontEnd.id}"
   }
 }
