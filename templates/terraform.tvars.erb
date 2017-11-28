@@ -3,8 +3,8 @@
 
 # aws
 region                                 = "us-west-1"
-aws_access_key_id                      = "<%= @aws_access_key_id %>"
-aws_secret_access_key                  = "<%= @aws_secret_access_key %>"
+aws_access_key_id          = "<%= @aws_access_key_id %>"
+aws_secret_access_key      = "<%= @aws_secret_access_key %>"
 
 # amazon s3 buckets
 terraform_wordpress_backup_s3_bucket   = "<%= node['chef_wordpress']['backup_s3_bucket'] %>"
@@ -16,13 +16,13 @@ origin_access_identity                 = "<%= node['chef_wordpress']['domain'] %
 
 # dns
 fqdn                                   = "<%= node['chef_wordpress']['domain'] %>"
-cloudfront_cname                       = "<%= @aws_cloudfront_cname %>"
+cloudfront_cname           = "<%= @aws_cloudfront_cname %>"
 
 # rds
 mysql_root_username                    = "<%= @mysql_root_username %>"
-mysql_root_password                    = "<%= @mysql_root_password %>"
+mysql_root_password        = "<%= @mysql_root_password %>"
 mysql_wordpress_username               = "<%= @mysql_wordpress_username %>"
-mysql_wordpress_password               = "<%= @mysql_wordpress_password %>"
+mysql_wordpress_password   = "<%= @mysql_wordpress_password %>"
 
 # chef provisioning
 provisioner_chef_user_key              = "<%= @provisioner_chef_user_key %>"
