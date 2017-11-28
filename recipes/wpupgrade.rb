@@ -45,7 +45,7 @@ template "#{node['chef_wordpress']['wordpress_root']}/wp-config.php" do
     db_name:                database_creds[node.chef_environment]['db_name'],
     db_user:                database_creds[node.chef_environment]['db_user'],
     db_password:            database_creds[node.chef_environment]['db_password'],
-    db_host:                database_creds[node.chef_environment]['db_host'],
-    db_port:                database_creds[node.chef_environment]['db_port']
+    db_host:                node['db_endpoint'].split(':')[0],
+    db_port:                node['db_endpoint'].split(':')[1]
   )
 end

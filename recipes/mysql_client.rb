@@ -8,9 +8,9 @@ end
 template "#{ENV['HOME']}/.my.cnf" do
   source 'my.cnf.erb'
   variables(
-    db_host:      database_creds[node.chef_environment]['db_host'],
+    db_host:      node['db_endpoint'].split(':')[0],
     db_user:      database_creds[node.chef_environment]['db_user'],
-    db_port:      database_creds[node.chef_environment]['db_port'],
+    db_port:      node['db_endpoint'].split(':')[1],
     db_password:  database_creds[node.chef_environment]['db_password']
   )
   mode 0o600
