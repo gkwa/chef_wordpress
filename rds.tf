@@ -32,6 +32,6 @@ resource "aws_db_security_group" "default" {
   name = "chef_wordpress"
 
   ingress {
-    security_group_id = "${aws_security_group.FrontEnd.id}"
+    cidr = "${aws_instance.web.private_ip}/32"
   }
 }

@@ -110,16 +110,6 @@ resource "aws_key_pair" "auth" {
   public_key = "${file(var.public_key_path)}"
 }
 
-resource "local_file" "json_config" {
-  content  = "${join("\n", data.template_file.init.*.rendered)}"
-  filename = "${path.module}/json_config.json"
-}
-
-resource "chef_environment" "env" {
-  name                    = "wordpress_test"
-  default_attributes_json = "${file(local_file.json_config.filename)}"
-}
-
 resource "aws_instance" "web" {
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.nano"
@@ -167,6 +157,7 @@ resource "aws_instance" "web" {
       private_key = "${file(var.private_key_path)}"
     }
 
+    attributes_json = "${join("\n", data.template_file.init.*.rendered)}"
     environment     = "wordpress_test"
     run_list        = ["chef_wordpress::hosts"]
     node_name       = "wwwtest"
