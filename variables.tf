@@ -6,7 +6,7 @@ variable "chef_client_name" {
 }
 
 variable "chef_server_url" {
-  default = "https://chef.streambox.com/organizations/streambox"
+  default = "https://chef.streambox.com/organizations/streambox/"
 }
 
 variable "provisioner_chef_user_key" {
