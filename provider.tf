@@ -1,6 +1,6 @@
 provider "chef" {
-  client_name = "${var.chef_client_name}"
-  server_url  = "${var.chef_server_url}"
+  client_name  = "${var.chef_client_name}"
+  server_url   = "${var.chef_server_url}"
 }
 
 provider "aws" {
