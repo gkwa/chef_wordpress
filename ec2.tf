@@ -1,10 +1,10 @@
 resource "aws_vpc" "default" {
-  cidr_block           = "172.31.0.0/16"
+  cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   tags {
-    Name = "test chef_wordpress"
+    Name = "tutorial-vpc"
   }
 }
 
@@ -23,32 +23,32 @@ resource "aws_default_route_table" "default" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "172.31.1.0/24"
+  cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = false
   availability_zone       = "us-west-1c"
 
   tags {
-    Name = "Public Subnet (chef_wordpress)"
+    Name = "Tutorial public"
   }
 }
 
 resource "aws_subnet" "private_1_subnet" {
   vpc_id            = "${aws_vpc.default.id}"
-  cidr_block        = "172.31.2.0/24"
-  availability_zone = "us-west-1b"
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-west-1c"
 
   tags {
-    Name = "Private subnet 1 (chef_wordpress)"
+    Name = "Tutorial Private 1"
   }
 }
 
 resource "aws_subnet" "private_2_subnet" {
   vpc_id            = "${aws_vpc.default.id}"
-  cidr_block        = "172.31.3.0/24"
-  availability_zone = "us-west-1c"
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-west-1b"
 
   tags {
-    Name = "Private subnet 2 (chef_wordpress)"
+    Name = "Tutorial Private 2"
   }
 }
 
