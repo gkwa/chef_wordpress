@@ -5,6 +5,5 @@ data "template_file" "init" {
   }
   EOF
 
-  vars {
-  }
+  vars {}
 }
