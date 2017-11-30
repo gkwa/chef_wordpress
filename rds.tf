@@ -1,3 +1,9 @@
+resource "mysql_user" "wp_admin" {
+  user               = "${var.mysql_wordpress_username}"
+  host               = "${element(split(":", aws_db_instance.default.endpoint),0)}"
+  plaintext_password = "${var.mysql_wordpress_password}"
+}
+
 resource "aws_db_instance" "default" {
   identifier        = "chefwordpress"
   allocated_storage = 5
