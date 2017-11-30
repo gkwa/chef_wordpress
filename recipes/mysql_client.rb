@@ -9,9 +9,9 @@ template "#{ENV['HOME']}/.my.cnf" do
   source 'my.cnf.erb'
   variables(
     db_host:      node['db_endpoint'].split(':')[0],
-    db_user:      database_creds[node.chef_environment]['db_user'],
+    db_user:      database_creds[node.chef_environment]['mysql_root_username'],
     db_port:      node['db_endpoint'].split(':')[1],
-    db_password:  database_creds[node.chef_environment]['db_password']
+    db_password:  database_creds[node.chef_environment]['mysql_root_password']
   )
   mode 0o600
   sensitive true
