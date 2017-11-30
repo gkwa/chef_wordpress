@@ -1,15 +1,15 @@
 resource "aws_db_instance" "default" {
-  identifier           = "chefwordpress"
-  allocated_storage    = 5
-  storage_type         = "gp2"
-  engine               = "mysql"
+  identifier        = "chefwordpress"
+  allocated_storage = 5
+  storage_type      = "gp2"
+  engine            = "mysql"
   instance_class       = "db.t2.micro"
   name                 = "chef_wordpress"
-  username             = "${var.mysql_root_username}"
-  password             = "${var.mysql_root_password}"
+  username          = "${var.mysql_root_username}"
+  password          = "${var.mysql_root_password}"
   db_subnet_group_name = "${aws_db_subnet_group.default.id}"
-  publicly_accessible  = true
-  skip_final_snapshot  = true
+  publicly_accessible = true
+  skip_final_snapshot = true
 
   tags {
     name = "chef_wordpress"
