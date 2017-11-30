@@ -41,11 +41,11 @@ resource "aws_security_group" "rdsSG" {
   name        = "tutorial-db-securitygroup"
   description = "tutorial rds security group"
   vpc_id      = "${aws_vpc.default.id}"
-  ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-		security_groups = ["${aws_security_group.FrontEnd.id}"]
-  }
 
+  ingress {
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
+    security_groups = ["${aws_security_group.FrontEnd.id}"]
+  }
 }
