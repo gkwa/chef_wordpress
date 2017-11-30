@@ -9,6 +9,7 @@
     "chef_wordpress": {
       "chef_provisioner_user_key": "~/.chef/mtm.pem",
       "chef_provider_client_name": "mtm",
+      "node_name": "wwwtest",
       "fqdn": "wwwtest.streambox.com",
       "terraform_cloudfront_s3_bucket": "wwwtest.streambox.com",
       "aws_cloudfront_cname": "wwwtestcdn.streambox.com"

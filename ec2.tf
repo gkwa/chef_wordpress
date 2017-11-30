@@ -1,10 +1,10 @@
 resource "aws_vpc" "default" {
-  cidr_block           = "172.31.0.0/16"
+  cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   tags {
-    Name = "test chef_wordpress"
+    Name = "tutorial-vpc"
   }
 }
 
@@ -23,32 +23,32 @@ resource "aws_default_route_table" "default" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "172.31.1.0/24"
+  cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = false
   availability_zone       = "us-west-1c"
 
   tags {
-    Name = "Public Subnet (chef_wordpress)"
+    Name = "Tutorial public"
   }
 }
 
 resource "aws_subnet" "private_1_subnet" {
   vpc_id            = "${aws_vpc.default.id}"
-  cidr_block        = "172.31.2.0/24"
-  availability_zone = "us-west-1b"
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-west-1c"
 
   tags {
-    Name = "Private subnet 1 (chef_wordpress)"
+    Name = "Tutorial Private 1"
   }
 }
 
 resource "aws_subnet" "private_2_subnet" {
   vpc_id            = "${aws_vpc.default.id}"
-  cidr_block        = "172.31.3.0/24"
-  availability_zone = "us-west-1c"
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-west-1b"
 
   tags {
-    Name = "Private subnet 2 (chef_wordpress)"
+    Name = "Tutorial Private 2"
   }
 }
 
@@ -94,7 +94,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-*-17.10-amd64*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-*-17.04-amd64*"]
   }
 
   filter {
@@ -160,7 +160,7 @@ resource "aws_instance" "web" {
     attributes_json = "${join("\n", data.template_file.init.*.rendered)}"
     environment     = "wordpress_test"
     run_list        = ["chef_wordpress::hosts"]
-    node_name       = "wwwtest"
+    node_name       = "${var.node_name}"
     secret_key      = "${file("~/.chef/encrypted_data_bag_secret")}"
     server_url      = "https://chef.streambox.com/organizations/streambox"
     recreate_client = true
@@ -190,4 +190,50 @@ resource "aws_route53_record" "webtest" {
   ttl     = "3600"
 
   records = ["${var.fqdn}"]
+}
+
+resource "aws_security_group" "FrontEnd" {
+  name = "chef_wordpress"
+
+  tags {
+    Name = "chef_wordpress"
+  }
+
+  description = "chef_wordpress"
+  vpc_id      = "${aws_vpc.default.id}"
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
