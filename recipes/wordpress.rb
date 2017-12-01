@@ -31,6 +31,68 @@ template "#{node['chef_wordpress']['wordpress_root']}/salt.php" do
   not_if { ::File.exist?("#{node['chef_wordpress']['wordpress_root']}/salt.php") }
 end
 
+directory "#{ENV['HOME']}/.wp-cli" do
+  mode 0o700
+end
+
+template "#{ENV['HOME']}/.wp-cli/config.yml" do
+  source '.wp-cli-config.yml.erb'
+  sensitive true
+  variables(
+    dbname:   database_creds[node.chef_environment]['db_name'],
+    dbuser:   database_creds[node.chef_environment]['mysql_root_username'],
+    dbpass:   database_creds[node.chef_environment]['mysql_root_password'],
+    dbhost:   node['db_endpoint']
+  )
+end
+
+ruby_block 'Creating wp-config.php with root creds' do
+  install = %W{
+    /usr/local/bin/wp
+    --path=#{node['chef_wordpress']['wordpress_root']}
+    --quiet
+    config create
+  }.join(' ')
+
+  block do
+    shell_out!(install)
+  end
+
+  not_if { ::File.exist?("#{node['chef_wordpress']['wordpress_root']}/wp-config.php") }
+end
+
+template "#{ENV['HOME']}/wp_db_user.sql" do
+  source 'wp_create_db_user.sql.erb'
+  sensitive true
+  mode 0o700
+  variables(
+    dbname:   database_creds[node.chef_environment]['db_name'],
+    wpadmin:  wordpress_creds[node.chef_environment]['wordpress_generic_admin_user'],
+    dbpass:   wordpress_creds[node.chef_environment]['wordpress_generic_admin_password'],
+    dbhost:   node['db_endpoint'].split(':')[0]
+  )
+end
+
+bash 'Create user in mysql.mysql table' do
+  cwd ENV['HOME']
+  code <<-EOH
+    mysql <wp_db_user.sql
+  EOH
+end
+
+ruby_block 'Create wordpress db using root creds' do
+  install = %W{
+    /usr/local/bin/wp
+    --path=#{node['chef_wordpress']['wordpress_root']}
+    --quiet
+    db create
+  }.join(' ')
+
+  block do
+    shell_out!(install)
+  end
+end
+
 template "#{node['chef_wordpress']['wordpress_root']}/wp-config.php" do
   source 'wp-config.php.erb'
   sensitive true
