@@ -4,5 +4,5 @@
 -- create wordpress user in mysql.mysql table
 GRANT usage ON *.* TO '<%= @wpadmin %>'@'%';
 GRANT ALL PRIVILEGES ON <%= @dbname %>.* TO "<%= @wpadmin %>"@"<%= @dbhost %>" IDENTIFIED BY "<%= @dbpass %>";
-GRANT ALL PRIVILEGES ON <%= @dbname %>.* TO "<%= @wpadmin %>"@"%" IDENTIFIED BY "<%= @dbpass %>";
+GRANT ALL PRIVILEGES ON <%= @dbname %>.* TO "<%= @wpadmin %>"@"<%= @ip %>" IDENTIFIED BY "<%= @dbpass %>";
 FLUSH PRIVILEGES;

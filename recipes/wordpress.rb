@@ -69,7 +69,8 @@ template "#{ENV['HOME']}/wp_db_user.sql" do
     dbname:   database_creds[node.chef_environment]['db_name'],
     wpadmin:  database_creds[node.chef_environment]['db_user'],
     dbpass:   database_creds[node.chef_environment]['db_password'],
-    dbhost:   node['db_endpoint'].split(':')[0]
+    dbhost:   node['db_endpoint'].split(':')[0],
+    ip:       node['local_ipv4']
   )
 end
 
