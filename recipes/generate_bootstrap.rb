@@ -1,4 +1,4 @@
-template '/tmp/wpbootstrap' do
+template '/usr/local/bin/wpbootstrap' do
   source 'wpbootstrap.erb'
   mode 0o700
 end
