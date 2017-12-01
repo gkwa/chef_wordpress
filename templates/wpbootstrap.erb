@@ -28,7 +28,6 @@ mkdir -p <%= node['chef_wordpress']['wordpress_root'] %>
     --exclude wp-content/htaccess.backup \
     --exclude wp-content/advanced-cache.php \
     --exclude .htaccess \
-    --exclude wp-config.php \
     /tmp/www/html/wordpress/ <%= node['chef_wordpress']['wordpress_root'] %>
 
 # help prevent wp core update-db from updating production by ensuring
