@@ -67,8 +67,8 @@ template "#{ENV['HOME']}/wp_db_user.sql" do
   mode 0o700
   variables(
     dbname:   database_creds[node.chef_environment]['db_name'],
-    wpadmin:  wordpress_creds[node.chef_environment]['wordpress_generic_admin_user'],
-    dbpass:   wordpress_creds[node.chef_environment]['wordpress_generic_admin_password'],
+    wpadmin:  database_creds[node.chef_environment]['db_user'],
+    dbpass:   database_creds[node.chef_environment]['db_password'],
     dbhost:   node['db_endpoint'].split(':')[0]
   )
 end
