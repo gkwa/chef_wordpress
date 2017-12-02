@@ -59,11 +59,10 @@ __eot__
 
 }
 
-set -x
-
 read -p "This is distructive and sholdn't be ouside sandbox, are you sure? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    set -x
     bootstrap
 fi
