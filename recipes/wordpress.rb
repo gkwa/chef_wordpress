@@ -96,19 +96,19 @@ template "#{node['chef_wordpress']['wordpress_root']}/wp-config.php" do
   source 'wp-config.php.erb'
   sensitive true
   variables(
-    wp_debug:                   node['chef_wordpress']['wp_debug'],
-    wp_debug_log:               node['chef_wordpress']['wp_debug_log'],
-    wp_debug_display:           node['chef_wordpress']['wp_debug_display'],
-    wp_script_debug:            node['chef_wordpress']['wp_script_debug'],
-    wp_auto_update_core:        node['chef_wordpress']['wp_auto_update_core'],
-    wp_disallow_file_mods:      node['chef_wordpress']['wp_disallow_file_mods'],
-    fqdn:                       node['fqdn'],
-    dns_aws_access_key_id:      wordpress_creds[node.chef_environment]['dns_aws_access_key_id'],
-    dns_aws_secret_access_key:  wordpress_creds[node.chef_environment]['dns_aws_secret_access_key'],
-    db_name:                    database_creds[node.chef_environment]['db_name'],
-    db_user:                    database_creds[node.chef_environment]['db_user'],
-    db_password:                database_creds[node.chef_environment]['db_password'],
-    db_host:                    node['db_endpoint'].split(':')[0],
+    wp_debug:                      node['chef_wordpress']['wp_debug'],
+    wp_debug_log:                  node['chef_wordpress']['wp_debug_log'],
+    wp_debug_display:              node['chef_wordpress']['wp_debug_display'],
+    wp_script_debug:               node['chef_wordpress']['wp_script_debug'],
+    wp_auto_update_core:           node['chef_wordpress']['wp_auto_update_core'],
+    wp_disallow_file_mods:         node['chef_wordpress']['wp_disallow_file_mods'],
+    fqdn:                          node['fqdn'],
+    dns_aws_access_key_id:         wordpress_creds[node.chef_environment]['dns_aws_access_key_id'],
+    dns_aws_secret_access_key:     wordpress_creds[node.chef_environment]['dns_aws_secret_access_key'],
+    db_name:                       database_creds[node.chef_environment]['db_name'],
+    db_user:                       database_creds[node.chef_environment]['db_user'],
+    db_password:                   database_creds[node.chef_environment]['db_password'],
+    db_host:                       node['db_endpoint'].split(':')[0],
     db_port:                    node['db_endpoint'].split(':')[1]
   )
 end

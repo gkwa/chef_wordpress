@@ -8,7 +8,7 @@ data "template_file" "init" {
   EOF
 
   vars {
-    db_endpoint       = "${aws_db_instance.default.endpoint}"
-    cloudfront_domain = "${aws_s3_bucket.b1.bucket_domain_name}"
+    db_endpoint            = "${aws_db_instance.default.endpoint}"
+    cloudfront_domain      = "${aws_s3_bucket.b1.bucket_domain_name}"
   }
 }
