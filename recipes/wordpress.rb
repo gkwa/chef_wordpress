@@ -70,7 +70,7 @@ template "#{ENV['HOME']}/wp_db_user.sql" do
     wpadmin:  database_creds[node.chef_environment]['db_user'],
     dbpass:   database_creds[node.chef_environment]['db_password'],
     dbhost:   node['db_endpoint'].split(':')[0],
-    ip:       node['local_ipv4']
+    ip:       node['ipaddress']
   )
 end
 
@@ -109,7 +109,8 @@ template "#{node['chef_wordpress']['wordpress_root']}/wp-config.php" do
     db_user:                       database_creds[node.chef_environment]['db_user'],
     db_password:                   database_creds[node.chef_environment]['db_password'],
     db_host:                       node['db_endpoint'].split(':')[0],
-    db_port:                    node['db_endpoint'].split(':')[1]
+    db_port:                       node['db_endpoint'].split(':')[1],
+    amazon_cloudfront_domain_nam:  node['cloudfront_domain_name']
   )
 end
 

@@ -15,6 +15,7 @@ template "#{ENV['PWD']}/env_#{node.chef_environment}.tvars" do
     chef_provisioner_user_key:     node['chef_wordpress']['chef_provisioner_user_key'],
     chef_provider_client_name:     node['chef_wordpress']['chef_provider_client_name'],
     s3_backup_bucket:              "#{node['chef_wordpress']['fqdn']}-backup",
-    node_name:                     node['chef_wordpress']['node_name']
+    node_name:                     node['chef_wordpress']['node_name'],
+    cloudfront_origin_domain:      node['chef_wordpress']['fqdn']
   )
 end

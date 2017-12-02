@@ -29,6 +29,8 @@ variable "region" {}
 variable "terraform_environment" {}
 variable "s3_backup_bucket" {}
 variable "cloudfront_s3_bucket" {}
+variable "cloudfront_origin_name" {}
+variable "cloudfront_origin_domain" {}
 variable "cloudfront_cname" {}
 variable "fqdn" {}
 variable "node_name" {}

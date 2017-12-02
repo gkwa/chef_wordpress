@@ -53,6 +53,8 @@
     "browsercache.enabled": "1",
     "cdn.enabled": "1",
     "cdn.engine": "cf2",
+    "cdn.cf2.cname": [ "<%= @amazon_cloudfront_cname %>" ],
+    "cdn.cf2.id": "<%= @amazon_cloudfront_domain_name %>",
     "cdn.cf2.key": "<%= @amazon_cloudfront_api_key_id %>",
     "cdn.cf2.secret": "<%= @amazon_cloudfront_api_key %>",
     "widget.pagespeed.key": "<%= @google_pagespeed_api_key %>",

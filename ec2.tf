@@ -189,7 +189,7 @@ resource "aws_route53_record" "webtest" {
   type    = "CNAME"
   ttl     = "3600"
 
-  records = ["${var.fqdn}"]
+  records = ["${aws_cloudfront_distribution.s3_distribution.domain_name}"]
 }
 
 resource "aws_security_group" "FrontEnd" {

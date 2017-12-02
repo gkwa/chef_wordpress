@@ -35,8 +35,10 @@ resource "aws_s3_bucket" "b1" {
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = "${aws_s3_bucket.b1.bucket_domain_name}"
-    origin_id   = "myS3Origin"
+    origin_id   = "chef_wordpress"
   }
+
+  aliases = ["${var.cloudfront_cname}"]
 
   enabled             = true
   is_ipv6_enabled     = true
@@ -46,7 +48,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "myS3Origin"
+    target_origin_id = "chef_wordpress"
 
     forwarded_values {
       query_string = false
