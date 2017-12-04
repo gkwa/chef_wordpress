@@ -28,6 +28,6 @@ resource "aws_s3_bucket" "b2" {
 
   tags {
     Name        = "${var.s3_backup_bucket}"
-    Environment = "${var.terraform_environment}"
+    Environment = "${terraform.workspace}"
   }
 }

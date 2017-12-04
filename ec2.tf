@@ -158,7 +158,7 @@ resource "aws_instance" "web" {
     }
 
     attributes_json = "${join("\n", data.template_file.init.*.rendered)}"
-    environment     = "wordpress_test"
+    environment     = "${terraform.workspace}"
     run_list        = ["chef_wordpress::hosts"]
     node_name       = "${var.node_name}"
     secret_key      = "${file("~/.chef/encrypted_data_bag_secret")}"

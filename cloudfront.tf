@@ -28,7 +28,7 @@ resource "aws_s3_bucket" "b1" {
 
   tags {
     Name        = "${var.cloudfront_s3_bucket}"
-    Environment = "${var.terraform_environment}"
+    Environment = "${terraform.workspace}"
   }
 }
 
@@ -74,7 +74,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   tags {
-    Environment = "${var.terraform_environment}"
+    Environment = "${terraform.workspace}"
   }
 
   viewer_certificate {

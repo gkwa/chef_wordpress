@@ -26,7 +26,6 @@ variable "mysql_root_username" {}
 variable "aws_access_key_id" {}
 variable "aws_secret_access_key" {}
 variable "region" {}
-variable "terraform_environment" {}
 variable "s3_backup_bucket" {}
 variable "cloudfront_s3_bucket" {}
 variable "cloudfront_origin_name" {}
