@@ -34,8 +34,15 @@ resource "aws_s3_bucket" "b1" {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.b1.bucket_domain_name}"
+    domain_name = "${var.fqdn}"
     origin_id   = "chef_wordpress"
+
+    custom_origin_config {
+      origin_protocol_policy = "match-viewer"
+      http_port              = "80"
+      https_port             = "443"
+      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+    }
   }
 
   aliases = ["${var.cloudfront_cname}"]
