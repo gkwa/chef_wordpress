@@ -7,15 +7,7 @@ resource "aws_db_instance" "default" {
   name                   = "tutorialdb"
   username               = "${var.mysql_root_username}"
   password               = "${var.mysql_root_password}"
-
-  # db_instance_identifier = "tutorial-db" # error: invalid identifier
   db_subnet_group_name   = "${aws_db_subnet_group.default.id}"
-
-  # vpc_security_group_ids =
-
-  # https://www.terraform.io/docs/providers/aws/r/db_instance.html#vpc_security_group_ids
-  # vpc_security_groups = ["${aws_db_security_group.default.id}"] # error: invalid identifier vpc_security_groups
-  # vpc_security_group_ids = ["${aws_db_security_group.default.id}"]
   vpc_security_group_ids = ["${aws_security_group.rdsSG.id}"]
   publicly_accessible    = true
   skip_final_snapshot    = true
