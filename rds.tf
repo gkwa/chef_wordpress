@@ -1,15 +1,15 @@
 resource "aws_db_instance" "default" {
-  identifier        = "chefwordpress"
-  allocated_storage = 5
-  storage_type      = "gp2"
-  engine            = "mysql"
-  instance_class    = "db.t2.small"
-  name              = "tutorialdb"
-  username          = "${var.mysql_root_username}"
-  password          = "${var.mysql_root_password}"
+  identifier             = "chefwordpress"
+  allocated_storage      = 5
+  storage_type           = "gp2"
+  engine                 = "mysql"
+  instance_class         = "db.t2.small"
+  name                   = "tutorialdb"
+  username               = "${var.mysql_root_username}"
+  password               = "${var.mysql_root_password}"
 
   # db_instance_identifier = "tutorial-db" # error: invalid identifier
-  db_subnet_group_name = "${aws_db_subnet_group.default.id}"
+  db_subnet_group_name   = "${aws_db_subnet_group.default.id}"
 
   # vpc_security_group_ids =
 
@@ -17,8 +17,9 @@ resource "aws_db_instance" "default" {
   # vpc_security_groups = ["${aws_db_security_group.default.id}"] # error: invalid identifier vpc_security_groups
   # vpc_security_group_ids = ["${aws_db_security_group.default.id}"]
   vpc_security_group_ids = ["${aws_security_group.rdsSG.id}"]
-  publicly_accessible = true
-  skip_final_snapshot = true
+  publicly_accessible    = true
+  skip_final_snapshot    = true
+
   tags {
     name = "chef_wordpress"
   }
