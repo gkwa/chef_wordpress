@@ -30,7 +30,7 @@ default['chef_wordpress']['wp_script_debug']                              = 'fal
 default['chef_wordpress']['wp_auto_update_core']                          = 'false'
 default['chef_wordpress']['wp_disallow_file_mods']                        = 'true'
 
-default['chef_wordpress']['backup_s3_bucket']                             = "backup-#{node['fqdn']}"
+default['chef_wordpress']['backup_s3_bucket']                             = "#{node['fqdn']}-backup"
 default['chef_wordpress']['cloudfront_s3_bucket']                         = node['fqdn']
 
 # install mysql client

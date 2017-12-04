@@ -5,7 +5,7 @@
 
 function bootstrap()
 {
-	/usr/local/bin/aws s3 sync --quiet s3://backup-www.streambox.com/var/www /tmp/www
+	/usr/local/bin/aws s3 sync --quiet s3://<%= node['chef_wordpress']['backup_s3_bucket'] %>/var/www /tmp/www
 	mkdir -p <%= node['chef_wordpress']['wordpress_root'] %>
 
 	[ ! -z "$(find /tmp -name www -type d -mmin -120)" ] && # rsync is slow
@@ -34,8 +34,8 @@ function bootstrap()
 	# our database connection string is coming from chef converge
 	rm -f <%= node['chef_wordpress']['wordpress_root'] %>/wp-config.php
 
-	/usr/local/bin/aws s3 cp --quiet s3://backup-www.streambox.com/wordpress.sql /tmp
-	/usr/local/bin/aws s3 cp --quiet s3://backup-www.streambox.com/wordpress.wxr /tmp
+	/usr/local/bin/aws s3 cp --quiet s3://<%= node['chef_wordpress']['backup_s3_bucket'] %>/wordpress.sql /tmp
+	/usr/local/bin/aws s3 cp --quiet s3://<%= node['chef_wordpress']['backup_s3_bucket'] %>/wordpress.wxr /tmp
 
 	chef-client --override-runlist chef_wordpress::nginx,chef_wordpress::wpupgrade
 	mysql -Dtrash </tmp/debug_db_create.sql
