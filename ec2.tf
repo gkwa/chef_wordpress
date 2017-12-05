@@ -106,7 +106,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_key_pair" "auth" {
-  key_name_prefix = "StreamboxLive-California"
+  key_name_prefix = "StreamboxLive-California-"
   public_key      = "${file(var.public_key_path)}"
 }
 

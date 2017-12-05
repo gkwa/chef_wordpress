@@ -22,7 +22,7 @@ provider "mysql" {
 }
 
 resource "aws_db_subnet_group" "default" {
-  name_prefix = "chef_wordpress"
+  name_prefix = "chef_wordpress-"
   description = "testing with chef_wordpress"
   subnet_ids  = ["${aws_subnet.private_1_subnet.id}", "${aws_subnet.private_2_subnet.id}"]
 }
