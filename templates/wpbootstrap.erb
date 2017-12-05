@@ -38,8 +38,8 @@ function bootstrap()
 	/usr/local/bin/aws s3 cp --quiet s3://www.streambox.com-backup/wordpress.wxr /tmp
 
 	chef-client --override-runlist chef_wordpress::nginx,chef_wordpress::wpupgrade
-	mysql -Dtrash </tmp/debug_db_create.sql
-	mysql -Dtrash </tmp/wordpress.sql
+  mysql -D<%= @db_name %></tmp/debug_db_create.sql
+	mysql -D<%= @db_name %></tmp/wordpress.sql
 	/usr/local/bin/wp1 option update siteurl https://<%= node['fqdn'] %>
 	/usr/local/bin/wp1 core update
 	/usr/local/bin/wp1 plugin install --force --activate wordpress-importer

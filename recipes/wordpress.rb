@@ -82,14 +82,14 @@ bash 'Create user in mysql.mysql table' do
 end
 
 ruby_block 'Create wordpress db using root creds' do
-  install = %W{
+  install = %w{
     /usr/local/bin/wp1 --quiet db create
   }.join(' ')
 
   block do
     shell_out!(install)
   end
-  not_if "/usr/local/bin/wp1 db check"
+  not_if '/usr/local/bin/wp1 db check'
 end
 
 template "#{node['chef_wordpress']['wordpress_root']}/wp-config.php" do
