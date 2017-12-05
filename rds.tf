@@ -1,5 +1,5 @@
 resource "aws_db_instance" "default" {
-  identifier_prefix      = "chef_wordpress-"
+  identifier_prefix      = "chefwordpress"
   allocated_storage      = 5
   storage_type           = "gp2"
   engine                 = "mysql"
