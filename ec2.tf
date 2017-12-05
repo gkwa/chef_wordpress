@@ -170,7 +170,9 @@ resource "aws_instance" "web" {
   }
 
   tags {
-    Name = "wordpress"
+    Name      = "wordpress"
+    Backup    = ""
+    Retention = "4"
   }
 }
 
