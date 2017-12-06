@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "b1" {
-  bucket = "${var.cloudfront_s3_bucket}"
-  acl    = "public-read"
+  bucket        = "${var.cloudfront_s3_bucket}"
+  acl           = "public-read"
 
   versioning {
     enabled = true
