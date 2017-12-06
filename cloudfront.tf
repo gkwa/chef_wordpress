@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "b1" {
   bucket        = "${var.cloudfront_s3_bucket}"
   acl           = "public-read"
+  force_destroy = true
 
   versioning {
     enabled = true

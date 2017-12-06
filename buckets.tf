@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "b2" {
   bucket        = "${var.s3_backup_bucket}"
   acl           = "private"
+  force_destroy = true
 
   versioning {
     enabled = true
