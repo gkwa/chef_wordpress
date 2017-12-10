@@ -20,7 +20,7 @@ bash 'Download Wordpress purchased assets' do
     /usr/local/bin/aws s3 sync --exclude '*' --include '*.zip' s3://www.streambox.com-wordpress-purchased-assets /tmp/purchased
 
     # 8.5.0:
-    wp1 theme  install --force --activate /tmp/purchased/theme/purchased/salient-8.5.0/themeforest-4363266-salient-responsive-multipurpose-theme/salient.zip
+    wp1 theme install --force --activate /tmp/purchased/theme/purchased/salient-8.5.0/themeforest-4363266-salient-responsive-multipurpose-theme/salient.zip
 
     # 5.2.2:
     wp1 plugin install --force --activate /tmp/purchased/theme/purchased/salient-8.5.0/themeforest-4363266-salient-responsive-multipurpose-theme/salient/plugins/js_composer_salient.zip
