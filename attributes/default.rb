@@ -60,6 +60,7 @@ default['chef_wordpress']['plugins'] = %w(
   amazon-web-services
   amazon-s3-and-cloudfront
   better-search-replace
+  better-font-awesome
   contact-form-7
   contact-form-7-to-database-extension
   duplicate-post
