@@ -8,6 +8,8 @@
   "chef_type": "environment",
   "default_attributes": {
     "chef_wordpress": {
+      "instance_class": "db.m1.medium",
+      "instance_type": "m3.large",
       "wp_debug": "true",
       "wp_debug_log": "true",
       "wp_debug_display": "true",

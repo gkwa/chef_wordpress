@@ -112,7 +112,7 @@ resource "aws_key_pair" "auth" {
 
 resource "aws_instance" "web" {
   ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.nano"
+  instance_type               = "${var.instance_type}"
   subnet_id                   = "${aws_subnet.public_subnet.id}"
   associate_public_ip_address = true
   depends_on                  = ["aws_internet_gateway.gw"]

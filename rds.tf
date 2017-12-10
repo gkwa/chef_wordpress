@@ -3,7 +3,7 @@ resource "aws_db_instance" "default" {
   allocated_storage      = 5
   storage_type           = "gp2"
   engine                 = "mysql"
-  instance_class         = "db.t2.small"
+  instance_class         = "${var.instance_class}"
   username               = "${var.mysql_root_username}"
   password               = "${var.mysql_root_password}"
   db_subnet_group_name   = "${aws_db_subnet_group.default.id}"

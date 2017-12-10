@@ -32,6 +32,8 @@ variable "cloudfront_origin_name" {}
 variable "cloudfront_origin_domain" {}
 variable "cloudfront_cname" {}
 variable "fqdn" {}
+variable "instance_type" {}
+variable "instance_class" {}
 variable "node_name" {}
 
 variable "streambox_zone_id" {
