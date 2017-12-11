@@ -90,6 +90,7 @@ default['chef_wordpress']['plugins'] = %w(
   w3-total-cache
   wordpress-importer
   wordpress-seo
+  wp-cors
   wp-facebook-pixel
   wp-force-ssl
   wp-gmail-smtp
