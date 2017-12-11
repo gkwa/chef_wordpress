@@ -7,6 +7,13 @@ resource "aws_s3_bucket" "b1" {
     enabled = true
   }
 
+  cors_rule {
+    allowed_origins = ["*.streambox.com"]
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD", "DELETE", "PUT", "POST"]
+    max_age_seconds = 3000
+  }
+
   lifecycle_rule {
     id                                     = "delete old"
     enabled                                = true
