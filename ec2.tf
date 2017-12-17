@@ -205,6 +205,13 @@ resource "aws_security_group" "FrontEnd" {
   vpc_id      = "${aws_vpc.default.id}"
 
   ingress {
+    from_port   = 8
+    to_port     = 0
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "TCP"

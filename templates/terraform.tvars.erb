@@ -10,6 +10,8 @@ cloudfront_origin_domain   = "<%= node['chef_wordpress']['fqdn'] %>"
 cloudfront_origin_name     = "<%= node['chef_wordpress']['fqdn'] %>"
 cloudfront_s3_bucket       = "<%= node['chef_wordpress']['fqdn'] %>"
 fqdn                       = "<%= node['chef_wordpress']['fqdn'] %>"
+instance_class             = "<%= @instance_class %>" # rds machine type (e.g. t2.nano, m1.large, etc.)
+instance_type              = "<%= @instance_type %>" # ec2 machine type (e.g. t2.nano, t2.small, ..., m1.large, etc.)
 mysql_root_password        = "<%= @mysql_root_password %>"
 mysql_root_username        = "<%= @mysql_root_username %>"
 mysql_wordpress_password   = "<%= @mysql_wordpress_password %>"
@@ -17,5 +19,3 @@ mysql_wordpress_username   = "<%= @mysql_wordpress_username %>"
 node_name                  = "<%= @node_name %>"
 region                     = "us-west-1"
 s3_backup_bucket           = "<%= @s3_backup_bucket %>"
-instance_class             = "<%= @instance_class %>" # rds machine type (e.g. t2.nano, m1.large, etc.)
-instance_type              = "<%= @instance_type %>" # ec2 machine type (e.g. t2.nano, m1.large, etc.)

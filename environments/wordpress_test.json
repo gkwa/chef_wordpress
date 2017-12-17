@@ -8,7 +8,7 @@
   "chef_type": "environment",
   "default_attributes": {
     "chef_wordpress": {
-      "instance_type": "t2.nano",
+      "instance_type": "t2.small",
       "instance_class": "db.t2.small",
       "wp_debug": "true",
       "wp_debug_log": "true",

@@ -69,7 +69,6 @@ default['chef_wordpress']['plugins'] = %w(
   go_pricing
   google-pagespeed-insights
   image-caption-hover
-  insert-headers-and-footers
   master-slider
   otw-blog-manager
   pixelyoursite
@@ -90,7 +89,6 @@ default['chef_wordpress']['plugins'] = %w(
   w3-total-cache
   wordpress-importer
   wordpress-seo
-  wp-cors
   wp-facebook-pixel
   wp-force-ssl
   wp-gmail-smtp
