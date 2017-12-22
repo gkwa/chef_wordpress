@@ -24,5 +24,11 @@ bash 'Download Wordpress purchased assets' do
 
     # 5.2.2:
     wp1 plugin install --force --activate /tmp/purchased/theme/purchased/salient-8.5.0/themeforest-4363266-salient-responsive-multipurpose-theme/salient/plugins/js_composer_salient.zip
+
+    # go_pricing table
+    wp1 plugin install --force --activate /tmp/purchased/plugin/purchased/codecanyon-3725820-go-pricing-wordpress-responsive-pricing-tables/go_pricing.zip
+
+    # blog manager
+    wp1 plugin install --force --activate '/tmp/purchased/plugin/purchased/codecanyon-9982292-blog-manager-for-wordpress/Blog Manager for WordPress/otw-blog-manager.zip'
   EOH
 end

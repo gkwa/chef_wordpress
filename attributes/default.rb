@@ -66,11 +66,9 @@ default['chef_wordpress']['plugins'] = %w(
   duplicate-post
   embed-google-adwords-codes-on-woocommerce
   fix-admin-contrast
-  go_pricing
   google-pagespeed-insights
   image-caption-hover
   master-slider
-  otw-blog-manager
   pixelyoursite
   pretty-link
   redirection
